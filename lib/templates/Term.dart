@@ -13,9 +13,9 @@ class TemplateTerm extends BeautifulPopupTemplate {
   @override
   Color get primaryColor => options.primaryColor ?? Color(0xfffb8c3c);
   @override
-  final maxWidth = 400;
+  final maxWidth = 800;
   @override
-  final maxHeight = 617;
+  final maxHeight = 1330;
   @override
   final bodyMargin = 0;
   @override
@@ -29,16 +29,17 @@ class TemplateTerm extends BeautifulPopupTemplate {
         child: title,
       ),
       Positioned(
-        top: percentH(42),
+        top: percentH(46),
         left: percentW(12),
         right: percentW(12),
-        height: percentH(actions == null ? 52 : 42),
+        height: percentH(actions == null ? 46 : 0),
         child: content,
       ),
       Positioned(
-        bottom: percentW(9),
-        left: percentW(12),
-        right: percentW(12),
+        bottom: percentH(5),
+        left: percentW(10),
+        right: percentW(10),
+        height: percentH(actions == null ? 0 : 46),
         child: actions ?? Container(),
       ),
     ];

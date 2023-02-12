@@ -13,9 +13,9 @@ class TemplateCoin extends BeautifulPopupTemplate {
   @override
   Color get primaryColor => options.primaryColor ?? Color(0xffff8269);
   @override
-  final maxWidth = 400;
+  final maxWidth = 800;
   @override
-  final maxHeight = 586;
+  final maxHeight = 1330;
   @override
   final bodyMargin = 0;
   @override
@@ -29,16 +29,17 @@ class TemplateCoin extends BeautifulPopupTemplate {
         child: title,
       ),
       Positioned(
-        top: percentH(56),
+        top: percentH(46),
         left: percentW(12),
         right: percentW(12),
-        height: percentH(actions == null ? 36 : 24),
+        height: percentH(actions == null ? 46 : 0),
         child: content,
       ),
       Positioned(
-        bottom: percentW(12),
-        left: percentW(14),
-        right: percentW(14),
+        bottom: percentH(5),
+        left: percentW(10),
+        right: percentW(10),
+        height: percentH(actions == null ? 0 : 46),
         child: actions ?? Container(),
       ),
     ];

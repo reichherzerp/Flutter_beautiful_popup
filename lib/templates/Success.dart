@@ -13,11 +13,11 @@ class TemplateSuccess extends BeautifulPopupTemplate {
   @override
   Color get primaryColor => options.primaryColor ?? Color(0xff4ABDFE);
   @override
-  final maxWidth = 400;
+  final maxWidth = 600;
   @override
-  final maxHeight = 588;
+  final maxHeight = 837;
   @override
-  final bodyMargin = 30;
+  final bodyMargin = 0;
   @override
   get layout {
     return [
@@ -29,16 +29,17 @@ class TemplateSuccess extends BeautifulPopupTemplate {
         child: title,
       ),
       Positioned(
-        top: percentH(58),
-        left: percentW(8),
-        right: percentW(8),
-        height: percentH(actions == null ? 40 : 24),
+        top: percentH(46),
+        left: percentW(12),
+        right: percentW(12),
+        height: percentH(actions == null ? 46 : 24),
         child: content,
       ),
       Positioned(
-        bottom: percentW(8),
-        left: percentW(8),
-        right: percentW(8),
+        bottom: percentH(5),
+        left: percentW(10),
+        right: percentW(10),
+        height: percentH(actions == null ? 0 : 46),
         child: actions ?? Container(),
       ),
     ];

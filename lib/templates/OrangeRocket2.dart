@@ -13,9 +13,9 @@ class TemplateOrangeRocket2 extends BeautifulPopupTemplate {
   @override
   Color get primaryColor => options.primaryColor ?? Color(0xffff902b);
   @override
-  final maxWidth = 350;
+  final maxWidth = 600;
   @override
-  final maxHeight = 488;
+  final maxHeight = 837;
   @override
   final bodyMargin = 0;
   @override
@@ -27,19 +27,21 @@ class TemplateOrangeRocket2 extends BeautifulPopupTemplate {
       Positioned(
         top: percentH(42),
         width: percentW(54),
+        height: percentH(0),
         child: title,
       ),
       Positioned(
-        top: percentH(52),
-        left: percentW(10),
-        right: percentW(10),
-        height: percentH(actions == null ? 40 : 26),
+        top: percentH(46),
+        left: percentW(12),
+        right: percentW(12),
+        height: percentH(actions == null ? 46 : 0),
         child: content,
       ),
       Positioned(
-        bottom: percentW(12),
+        bottom: percentH(5),
         left: percentW(10),
         right: percentW(10),
+        height: percentH(actions == null ? 0 : 46),
         child: actions ?? Container(),
       ),
     ];

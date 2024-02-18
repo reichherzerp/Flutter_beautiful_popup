@@ -123,32 +123,22 @@ class BeautifulPopup {
     this.primaryColor = color;
     final illustrationData = await rootBundle.load(instance.illustrationKey);
     final buffer = illustrationData.buffer.asUint8List();
-    img.Image? asset;
-    asset = img.readPng(buffer);
+    img.Image? asset = img.decodeImage(buffer); // Use decodeImage for PNG/JPEG
+    
     if (asset != null) {
-      img.adjustColor(
-        asset,
-        saturation: 0,
-        // Adjustments as per your code
-      );
-      img.colorOffset(
-        asset,
-        red: color.red,
-        green: color.green ~/ 3,
-        blue: color.blue ~/ 2,
-        alpha: 0,
-      );
-    }
-    // Convert the modified image back to Uint8List
-    final modifiedBuffer = asset != null ? Uint8List.fromList(img.encodePng(asset)) : buffer;
+      // Your color adjustment logic here
+      asset = img.adjustColor(asset, saturation: 0, red: color.red, green: color.green ~/ 3, blue: color.blue ~/ 2);
+      final modifiedBuffer = Uint8List.fromList(img.encodePng(asset));
 
-    // Decode the image data to get a ui.Image
-    final ui.Codec codec = await ui.instantiateImageCodec(modifiedBuffer);
-    final ui.FrameInfo frameInfo = await codec.getNextFrame();
-    _illustration = frameInfo.image;
+      // Correct use of instantiateImageCodec
+      final ui.Codec codec = await ui.instantiateImageCodec(modifiedBuffer);
+      final ui.FrameInfo frameInfo = await codec.getNextFrame();
+      _illustration = frameInfo.image;
+    }
     
     return this;
   }
+
 
 
   /// `title`: Must be a `String` or `Widget`. Defaults to `''`.

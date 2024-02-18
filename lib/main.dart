@@ -129,23 +129,27 @@ class BeautifulPopup {
       img.adjustColor(
         asset,
         saturation: 0,
-        // hue: 0,
+        // Adjustments as per your code
       );
       img.colorOffset(
         asset,
         red: color.red,
-        // I don't know why the effect is nicer with the number ╮(╯▽╰)╭
         green: color.green ~/ 3,
         blue: color.blue ~/ 2,
         alpha: 0,
       );
     }
-    final paint = await PaintingBinding.instance?.instantiateImageCodec(
-        asset != null ? Uint8List.fromList(img.encodePng(asset)) : buffer);
-    final nextFrame = await paint?.getNextFrame();
-    _illustration = nextFrame?.image;
+    // Convert the modified image back to Uint8List
+    final modifiedBuffer = asset != null ? Uint8List.fromList(img.encodePng(asset)) : buffer;
+
+    // Decode the image data to get a ui.Image
+    final ui.Codec codec = await ui.instantiateImageCodec(modifiedBuffer);
+    final ui.FrameInfo frameInfo = await codec.getNextFrame();
+    _illustration = frameInfo.image;
+    
     return this;
   }
+
 
   /// `title`: Must be a `String` or `Widget`. Defaults to `''`.
   ///
